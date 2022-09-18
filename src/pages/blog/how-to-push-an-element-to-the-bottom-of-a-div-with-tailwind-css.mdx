@@ -1,0 +1,49 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "How to Push an Element to the bottom of a Div with Tailwind css"
+description: "Learn an easy way to push an item to the bottom of a container with Tailwind CSS and flexbox."
+pubDate: "Dec 13 2021"
+heroImage: "/placeholder-hero.jpg"
+---
+
+Sometimes when you're making a component it makes sense to push an element, like a button, to the bottom of a div or card. When using flexbox with a flex direction of column, each element in the div or container will go from top to bottom. In this example, I wanted to pin a button to the bottom of the card.
+
+The easiest way I've found to do this was to utilize flexbox along with a margin-top of auto in order to push the last element to the bottom.
+
+First, make sure to include the flex and flex-col utility classes into the div that contains the rest of the elements. In this case, I have a div with 4 elements as well as another div (wrapped in a Link) that contains the button that I want pushed to the bottom of the card.
+
+I've wrapped the button inside of the Link tag with the utility class of mt-auto which pushes the 'View Post' button to the bottom of the card.
+
+```js
+// Card component
+
+<div 
+  className='bg-gray-200 bg-opacity-40 rounded-xl flex flex-col w-11/12 lg:w-80 mx-auto' 
+  key={post.id}
+>
+  <div className='px-4 py-4'>
+    <h3 className='text-xl font-bold pb-2'>{post.title}</h3>
+    <p className='font-light'>
+      <span className='font-bold'>Author:</span>
+      {post.author}
+    </p>
+    <p className='font-light'>
+      <span className='font-bold'>Comments:</span>
+        {post.num_comments}
+    </p>
+    <p className='font-light'>
+      <span className='font-bold'>UpVote:</span>
+        {post.ups}
+    </p>
+  </div>
+  <Link href={post.url} className=''>
+    <div className='bg-slate-400 bg-opacity-40 rounded-b-xl text-center mt-auto w-full'>
+      <button className='w-full font-bold text-xl py-4'>View Post</button>
+    </div>
+  </Link>
+</div>
+```
+
+You can use the rounded-b utility class to match the rounded-xl used in the div that wraps the entire card so that there isn't any overlap.
+
+I'm sure that there are plenty of other ways to do this and accomplish the same thing, but using flexbox with a margin-top of auto on the last item was an easy to implement solution!

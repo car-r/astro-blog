@@ -1,0 +1,124 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "How to count true values in an array with JavaScript"
+description: "Three ways to count the number of true values in an array using loops and a filter method."
+pubDate: "Mar 13 2022"
+heroImage: "/placeholder-hero.jpg"
+---
+
+Learning how to count the number of times a value is true or false in an array or list is a useful tool in your developers tool belt. This will come up as a pattern you'll recognize as you start to solve similar problems in your programming career.
+
+Here are 3 different ways to complete solve this problem.
+
+## For Loop
+
+The first way is with a tried and true for loop. If you're trying to return an answer from an array, theres a good chance that a for loop can get the job done. Our trueFalseArray has 5 boolean values, 3 true and 2 false. Let's loop through the array and check if each index is equal to true, and if it is, increase a counter by 1.
+
+```js
+// Array of boolean values | 3 true and 2 false
+const trueFalseArray = [
+  true, true, false, true, false
+]
+
+// Function to loop through array and count number of true values
+
+function countTrueForLoop(arr) {
+  let counter = 0 
+  for (let i = 0; i < arr.length; i++) {
+    if(arr[i] === true) {
+      counter = counter + 1
+    }
+  }
+  return counter
+}
+
+console.log(countTrueForLoop(trueFalseArray))
+// returns 3
+```
+
+If you're comfortable writing for loops, this may be the solution that makes the most sense. Not only that, but you can replace the if statement with different logic to check other things. If you had a list of numbers you could count how many numbers are less than a certain amount, like 10.
+
+```js
+// Array of numbers | two are less than 10
+const numbersArray = [
+  4, 5, 11, 12, 13
+]
+
+function countNumbersLessThanTen(arr) {
+  let counter = 0 
+  for (let i = 0; i < arr.length; i++) {
+    if(arr[i] < 10) {
+      counter = counter + 1
+    }
+  }
+  return counter
+}
+
+console.log(countNumbersLessThanTen(numbersArray))
+// returns 2
+```
+
+## Filter Method
+
+Another way to do this would be to use the Filter method. If you're trying to solve a problem that involves an array, a particular array method could be easier than writing a for loop. In this case, we'll use the filter method to check if the boolean value is true. Then we can return the length, which would be the count of total true values.
+
+```js
+// Array of boolean values | 3 true and 2 false
+const trueFalseArray = [
+  true, true, false, true, false
+]
+
+function countTrue(array) {
+  return array.filter(Boolean).length
+}
+
+console.log(countTrue(trueFalseArray))
+// returns 3
+```
+
+This solution is a few lines of code shorter than a for loop and takes advantage of the filter method. One potential issue with this solution is that if an array contains something else besides a boolean value, you could miscalculate the number of true values.
+
+In this example, a false value has been replaced with a string 'Hello'. Using the same filter array with a Boolean will return 4 true values instead of 3
+
+```js
+const trueFalseArray = [
+  true, true, false, true, 'Hello'
+]
+
+function countTrue(array) {
+  return array.filter(Boolean).length
+}
+
+console.log(countTrue(trueFalseArray))
+// returns 4
+```
+
+This is because the string 'Hello' is a truthy value. The function countTrue is giving you the 'correct' answer, just not the one you may be expecting. It's important to remember that this isn't an issue as long as all of the values in the array are booleans.
+
+## For Of Loop
+
+Another solution to this problem would be to use a for of loop instead of a for loop. A for of loop works in this case because it is iterating over an array and not an object. For each value in the array, the function will check to see if the value is equal to true, and then increase the counter by 1.
+
+```js
+const trueFalseArray = [
+  true, true, false, true, 'Hello'
+]
+
+function countTrueForOf(arr) {
+  let count = 0
+  for (value of arr) {
+    if (value === true) {
+      count += 1
+    }
+  }
+  return count
+}
+
+console.log(countTrueForOf(trueFalseArray))
+// returns 3
+```
+
+Similar to the other for loop example, you can change out the logic in the for of loop to check for other conditions to increase or decrease a counter or a number of other things.
+
+## Conclusion
+These are three ways you can count the number of true values in an array. Being able to recognize circumstances where loops and array methods takes time and repetition, so get those reps in!
