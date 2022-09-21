@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Body from '../layouts/Body.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+import PostCard from '../components/PostCard.astro';
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
@@ -37,18 +38,20 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 		<Header />
 		<main >
 			<section>
-				<ul>
+				<ul class="flex flex-col gap-6">
 					{posts.map((post) => (
-						<li>
-							<time datetime={post.frontmatter.pubDate}>
-								{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
-									year: 'numeric',
-									month: 'short',
-									day: 'numeric',
-								})}
-							</time>
-							<a href={post.url}>{post.frontmatter.title}</a>
-						</li>
+						// <li>
+						// 	<time datetime={post.frontmatter.pubDate}>
+						// 		{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
+						// 			year: 'numeric',
+						// 			month: 'short',
+						// 			day: 'numeric',
+						// 		})}
+						// 	</time>
+						// 	<a href={post.url}>{post.frontmatter.title}</a>
+						// 	<img src={post.frontmatter.heroImage}/>
+						// </li>
+						<PostCard post={post}/>
 					))}
 				</ul>
 			</section>

@@ -37,7 +37,7 @@ const {
 	<Body >
 		<Header />
 		<main>
-			<article class="md:prose-lg prose-a:text-blue-500 text-stone-300">
+			<article class="prose-lg prose-a:text-blue-500 text-stone-300 prose-h2:text-stone-100 ">
 				{heroImage && (
 					<img
 						width={870}
@@ -46,8 +46,8 @@ const {
 						alt=""
 					/>
 				)}
-				<h1 class="title text-stone-100">{title}</h1>
-				{pubDate && <time class="text-stone-500">{pubDate}</time>}
+				<h1 class="title text-stone-100 font-bold">{title}</h1>
+				{pubDate && <time class="text-stone-400">{pubDate}</time>}
 				{updatedDate && <div class="text-stone-500">Last updated on <time>{updatedDate}</time></div>}
 				<hr/>
 				<slot />
