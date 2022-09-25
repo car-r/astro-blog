@@ -6,7 +6,11 @@ pubDate: "Feb 12 2022"
 heroImage: "/placeholder-hero.jpg"
 ---
 
-Styling cards or containers with a border bottom can provide a nice distinction between the card and the next child below it. Sometimes you'll run into a situation where the last child in a list will run into something beneath it with a border top. This post will show you how to remove the bottom border from the last child using Tailwind CSS.
+Styling cards or containers with a border bottom can provide a nice 
+distinction between the card and the next child below it. 
+Sometimes you'll run into a situation where the last child in a list 
+will run into something beneath it with a border top. 
+This post will show you how to remove the bottom border from the last child using Tailwind CSS.
 
 In this example, the last card is running into the footer and the styling looks out of place.
 
@@ -42,7 +46,11 @@ In this example, the last card is running into the footer and the styling looks 
 </div>
 ```
 
-As you can see, the bottom border looks out of place with the footer beneath it. Removing the border top on the Footer didn't make the styling look that much better, either. Luckily, Tailwind has a built in <a href="https://tailwindcss.com/docs/hover-focus-and-other-states#last-child-v1-1-0" target="_blank">Last Modifier</a> that makes it very simple to change the styling on the last child. I simply added the 'Last' modifier with a border bottom of 0.
+As you can see, the bottom border looks out of place with the footer beneath it. 
+Removing the border top on the Footer didn't make the styling look that much better, either. 
+Luckily, Tailwind has a built in 
+<a href="https://tailwindcss.com/docs/hover-focus-and-other-states#last-child-v1-1-0" target="_blank">Last Modifier</a> 
+that makes it very simple to change the styling on the last child. I simply added the 'Last' modifier with a border bottom of 0.
 
 ```js
 // Card Component
@@ -81,4 +89,7 @@ Removing the border bottom makes for a much cleaner transition and flows natural
 
 ![Removing border bottom](/images/removing-border-bottom.png)
 
-I prefer using CSS modifiers to make subtle styling changes instead of writing additional Javascript. Keeping track of all of the useful Tailwind and CSS modifiers for every circumstance isn't easy to do, but this situation happens more often than you would think. Be sure to keep this modifier in your back pocket if you're a fan of Tailwind CSS!
+I prefer using CSS modifiers to make subtle styling changes instead of writing additional Javascript. 
+Keeping track of all of the useful Tailwind and CSS modifiers for every circumstance isn't easy to do, 
+but this situation happens more often than you would think. 
+Be sure to keep this modifier in your back pocket if you're a fan of Tailwind CSS!
