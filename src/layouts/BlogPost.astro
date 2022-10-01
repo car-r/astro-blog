@@ -2,7 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import Body from "./Body.astro";
+import Container from "./Container.astro";
 
 export interface Props {
 	content: {
@@ -34,8 +34,9 @@ const {
 		</style>
 	</head>
 
-	<Body >
+	<body class="bg-black" >
 		<Header />
+		<Container>
 		<main>
 			<article class="prose-lg prose-a:text-blue-500 text-stone-300 prose-h2:text-stone-100 ">
 				{heroImage && (
@@ -54,5 +55,6 @@ const {
 			</article>
 		</main>
 		<Footer />
-	</Body>
+		</Container>
+	</body>
 </html>

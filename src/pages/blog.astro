@@ -2,7 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Body from '../layouts/Body.astro';
+import Container from '../layouts/Container.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 import PostCard from '../components/PostCard.astro';
 
@@ -34,28 +34,30 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 			}
 		</style>
 	</head>
-	<Body>
+	<body class="bg-black">
 		<Header />
-		<main >
-			<section>
-				<ul class="flex flex-col gap-6">
-					{posts.map((post) => (
-						// <li>
-						// 	<time datetime={post.frontmatter.pubDate}>
-						// 		{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
-						// 			year: 'numeric',
-						// 			month: 'short',
-						// 			day: 'numeric',
-						// 		})}
-						// 	</time>
-						// 	<a href={post.url}>{post.frontmatter.title}</a>
-						// 	<img src={post.frontmatter.heroImage}/>
-						// </li>
-						<PostCard post={post}/>
-					))}
-				</ul>
-			</section>
-		</main>
+		<Container>
+			<main >
+				<section class="py-4">
+					<ul class="flex flex-col gap-6">
+						{posts.map((post) => (
+							// <li>
+							// 	<time datetime={post.frontmatter.pubDate}>
+							// 		{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
+							// 			year: 'numeric',
+							// 			month: 'short',
+							// 			day: 'numeric',
+							// 		})}
+							// 	</time>
+							// 	<a href={post.url}>{post.frontmatter.title}</a>
+							// 	<img src={post.frontmatter.heroImage}/>
+							// </li>
+							<PostCard post={post}/>
+						))}
+					</ul>
+				</section>
+			</main>
+		</Container>
 		<Footer />
-	</Body>
+	</body>
 </html>
