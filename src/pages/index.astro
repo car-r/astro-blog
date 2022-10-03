@@ -4,6 +4,15 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 import Container from '../layouts/Container.astro';
+import Hero from '../components/Hero.astro';
+import RecentPosts from '../components/RecentPosts.astro';
+
+
+const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
+	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+);
+
+const recentPosts = posts.slice(0,3)
 ---
 
 <!DOCTYPE html>
@@ -14,31 +23,16 @@ import Container from '../layouts/Container.astro';
 	<div class="bg-black">
 		<Header title={SITE_TITLE} />
 		<main class="text-stone-400">
-			<div class="flex flex-col mx-auto text-stone-100 py-28 bg-hero bg-cover">
-				<h1 class="text-blue-700 text-center text-3xl md:text-4xl font-semibold pb-1">
-					Welcome to DevReps
-				</h1>
-				<p class="text-center text-xl font-semibold">
-					Learn to code through repetition
-				</p>
-				<p class="text-center text-lg font-thin">
-					Build web development
-					skills from blog posts and YouTube videos.
-				</p>
-				<div class="flex flex-col sm:flex-row w-full items-center justify-center gap-3 mt-4">
-					<a href="/blog" class="text-stone-100">
-						<button class="font-semibold py-3 px-4 bg-blue-700 border-2 border-blue-700 rounded-md hover:bg-black w-56">
-							Blog
-						</button>
-					</a>
-					<a href="https://www.youtube.com" class="text-stone-100">
-						<button class="font-semibold py-3 px-4 border-2 border-blue-700 rounded-md w-56 hover:bg-blue-700">
-							YouTube
-						</button>
-					</a>
-					
+			<Hero />
+			<RecentPosts recentPosts={recentPosts}/>
+			<!-- <div class="py-20 px-4 max-w-7xl mx-auto">
+				<h3 class="text-2xl font-bold text-center text-stone-100 pb-6">Recent Posts</h3>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+					{recentPosts.map((recentPost) => (
+						<RecentPostCard recentPost={recentPost}/>
+					))}
 				</div>
-			</div>
+			</div> -->
 			<p>
 				This template comes with a few integrations already configured in your
 				<code>astro.config.mjs</code> file. You can customize your setup with

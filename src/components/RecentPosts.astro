@@ -1,0 +1,14 @@
+---
+const {recentPosts} = Astro.props
+
+import RecentPostCard from "./RecentPostCard.astro";
+---
+
+<div class="py-32 px-4 max-w-7xl mx-auto">
+    <h3 class="text-2xl font-bold text-center text-stone-100 pb-10">Recent Posts</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {recentPosts.map((recentPost) => (
+            <RecentPostCard recentPost={recentPost}/>
+        ))}
+    </div>
+</div>
