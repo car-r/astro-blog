@@ -11,6 +11,7 @@ const {recentPost} = Astro.props
     
     <a href={recentPost.url}><h4 class="text-stone-200 text-lg font-bold mb-4">{recentPost.frontmatter.title}</h4></a>
     <p class="text-stone-500 mb-4 font-light">{recentPost.frontmatter.description}</p>
+    <div class="flex justify-between mt-auto">
     <time datetime={recentPost.frontmatter.pubDate} class="text-stone-500 text-sm font-thin mt-auto">
         {new Date(recentPost.frontmatter.pubDate).toLocaleDateString('en-us', {
             year: 'numeric',
@@ -18,4 +19,5 @@ const {recentPost} = Astro.props
             day: 'numeric',
         })}
     </time>
+    </div>  
 </div>

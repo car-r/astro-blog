@@ -14,11 +14,13 @@ const {post} = Astro.props
                 })}
             </time> 
             <p class="hidden md:block text-stone-400 md:mt-2">{post.frontmatter.description}</p>
+            <a href={post.url} class=" hover:underline mt-auto">Read more</a>
         </div>
         <a href={post.url} class="md:-order-last md:w-1/2 md:mr-3">
             <img src={post.frontmatter.heroImage} class=""/>
         </a>
         <!-- <img src={post.frontmatter.heroImage} class=" md:w-1/2 md:-order-last md:mr-3"/> -->
         <p class="text-stone-400 md:hidden ">{post.frontmatter.description}</p>
+        
     </div>
 </li>
