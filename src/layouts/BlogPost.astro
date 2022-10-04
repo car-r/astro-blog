@@ -37,7 +37,7 @@ const {
 	<body class="bg-black" >
 		<Header />
 		<Container>
-		<main>
+		<main class="py-10">
 			<article class="prose max-w-none prose-lg md:prose-xl prose-a:text-blue-500 text-stone-300 prose-blockquote:text-stone-300 prose-headings:text-stone-100 prose-strong:text-stone-300 prose-code:text-black ">
 				{heroImage && (
 					<img
@@ -45,6 +45,7 @@ const {
 						height={360}
 						src={heroImage}
 						alt=""
+						class=""
 					/>
 				)}
 				<h1 class="title text-stone-100 font-bold">{title}</h1>
