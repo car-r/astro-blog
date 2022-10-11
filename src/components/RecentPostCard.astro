@@ -5,19 +5,20 @@ const {recentPost} = Astro.props
 <div class="p-4 border border-stone-800 rounded-lg flex flex-col">
     <!-- <div class="relative">
         <img src={recentPost.frontmatter.heroImage} class="mb-3 rounded-md"/>
-        <p class="absolute bg-blue-400 px-2 rounded-md text-white top-3 right-4">{recentPost.frontmatter.tag}</p>
+        <p class="text-sm absolute bg-orange-400 px-3 rounded-sm text-white top-3 right-4">{recentPost.frontmatter.tag}</p>
     </div> -->
     <img src={recentPost.frontmatter.heroImage} class="mb-3 rounded-md"/>
     
     <a href={recentPost.url}><h4 class="text-stone-200 text-lg font-bold mb-4">{recentPost.frontmatter.title}</h4></a>
     <p class="text-stone-500 mb-4 font-light">{recentPost.frontmatter.description}</p>
     <div class="flex justify-between mt-auto">
-    <time datetime={recentPost.frontmatter.pubDate} class="text-stone-500 text-sm font-thin mt-auto">
-        {new Date(recentPost.frontmatter.pubDate).toLocaleDateString('en-us', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-        })}
-    </time>
-    </div>  
+        <time datetime={recentPost.frontmatter.pubDate} class="text-stone-500 text-sm font-semibold mt-auto">
+            {new Date(recentPost.frontmatter.pubDate).toLocaleDateString('en-us', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+            })}
+        </time>
+        <p class="text-sm bg-stone-700 rounded-md px-3">{recentPost.frontmatter.tag}</p>
+    </div>
 </div>
