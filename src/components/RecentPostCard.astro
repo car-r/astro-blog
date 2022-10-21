@@ -1,13 +1,21 @@
 ---
+// const {recentPost} = Astro.props
+// console.log(recentPost.frontmatter)
 const {recentPost} = Astro.props
+
 ---
 
 <div class="p-4 border border-stone-800 rounded-lg flex flex-col">
-    <!-- <div class="relative">
+    <div class="relative">
         <img src={recentPost.frontmatter.heroImage} class="mb-3 rounded-md"/>
-        <p class="text-sm absolute bg-orange-400 px-3 rounded-sm text-white top-3 right-4">{recentPost.frontmatter.tag}</p>
-    </div> -->
-    <img src={recentPost.frontmatter.heroImage} class="mb-3 rounded-md"/>
+        <div class="flex gap-1 absolute top-3 right-3">
+            {recentPost.frontmatter.tag.map((tag) => (
+                <p class="text-sm bg-orange-400 px-3 rounded-sm text-white">{tag}</p>
+            ))}
+        </div>
+        <!-- <p class="text-sm absolute bg-orange-400 px-3 rounded-sm text-white top-3 right-4">{recentPost.frontmatter.tag}</p> -->
+    </div>
+    <!-- <img src={recentPost.frontmatter.heroImage} class="mb-3 rounded-md"/> -->
     
     <a href={recentPost.url}><h4 class="text-stone-200 text-lg font-bold mb-4">{recentPost.frontmatter.title}</h4></a>
     <p class="text-stone-500 mb-4 font-light">{recentPost.frontmatter.description}</p>
@@ -19,6 +27,15 @@ const {recentPost} = Astro.props
                 day: 'numeric',
             })}
         </time>
-        <p class="text-sm text-stone-300 bg-stone-800 rounded-md px-3">{recentPost.frontmatter.tag}</p>
+        
+        <div class="flex gap-1">
+            {recentPost.frontmatter.tag.map((tag) => (
+                <p class="text-sm text-stone-300 bg-stone-800 rounded-md px-3">{tag}</p>
+            ))}
+        </div>
+        
+        <!-- <p class="text-sm text-stone-300 bg-stone-800 rounded-md px-3">{recentPost.frontmatter.tag}</p> -->
+        
     </div>
+    
 </div>
