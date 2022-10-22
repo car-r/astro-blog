@@ -52,7 +52,7 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 							// 	<a href={post.url}>{post.frontmatter.title}</a>
 							// 	<img src={post.frontmatter.heroImage}/>
 							// </li>
-							<PostCard post={post}/>
+							<PostCard post={post} tag={post.frontmatter.tag} description={post.frontmatter.description} title={post.frontmatter.title}/>
 						))}
 					</ul>
 				</section>

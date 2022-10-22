@@ -1,13 +1,15 @@
 ---
-const {post} = Astro.props
+const {post, tag, pubDate, heroImage, title } = Astro.props
+// const { post } = Astro.props
+
 ---
 
 <li >
-    <div class="flex flex-col md:flex-row p-6 border border-stone-800 rounded-xl gap-2">
+    <div class="flex flex-col md:flex-row p-4 border border-stone-800 rounded-xl gap-2">
         <a href={post.url} class=" md:-order-last md:w-3/5 md:mr-3 mb-3 md:mb-0">
             <img src={post.frontmatter.heroImage} class="rounded-md"/>
         </a>
-        <div class="flex flex-col md:w-1/2">
+        <div class="flex flex-col md:w-2/5">
             <a href={post.url} class="text-xl text-stone-200 md:text-xl font-bold hover:text-blue-400 mb-1">{post.frontmatter.title}</a>
             <div class="flex gap-3 items-center pb-3">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -23,8 +25,13 @@ const {post} = Astro.props
                     </time> 
                 </div>               
             </div>
+            <div class="flex gap-2 mb-4">
+                {post.frontmatter.tag.map((tag) => (
+                    <p class="text-xs text-stone-300 bg-stone-800 rounded-md py-1 px-3">{tag}</p>
+                ))}
+            </div>
+            <p class="text-sm font-light md:block text-stone-400 mb-4 md:mb-2">{post.frontmatter.description}</p>
             
-            <p class="md:block text-stone-400 mb-4 md:mb-2">{post.frontmatter.description}</p>
             <a href={post.url} class="md:block hover:underline mt-auto">Read more</a>
         </div>
         <!-- <a href={post.url} class="order-last md:-order-last md:w-1/2 md:mr-3">

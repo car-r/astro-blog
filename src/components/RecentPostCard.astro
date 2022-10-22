@@ -30,7 +30,7 @@ const {recentPost} = Astro.props
         
         <div class="flex gap-1">
             {recentPost.frontmatter.tag.map((tag) => (
-                <p class="text-sm text-stone-300 bg-stone-800 rounded-md px-3">{tag}</p>
+                <p class="text-xs text-stone-300 bg-stone-800 rounded-md py-1 px-3">{tag}</p>
             ))}
         </div>
         

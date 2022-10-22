@@ -11,11 +11,12 @@ export interface Props {
 		pubDate?: string;
 		updatedDate?: string;
 		heroImage?: string;
+		tag?: string[];
 	};
 }
 
 const {
-	content: { title, description, pubDate, updatedDate, heroImage },
+	content: { title, description, pubDate, updatedDate, heroImage, tag },
 } = Astro.props;
 ---
 
@@ -23,14 +24,14 @@ const {
 	<head>
 		<BaseHead title={title} description={description} />
 		<style>
-			.title {
+			/* .title {
 				font-size: 2em;
 				margin: 0.25em 0 0;
 			}
 			hr {
   				border-top: 1px solid #DDD;
 				margin: 1rem 0;
-			}
+			} */
 		</style>
 	</head>
 
@@ -48,10 +49,15 @@ const {
 						class=""
 					/>
 				)}
-				<h1 class="title text-stone-100 font-bold">{title}</h1>
-				{pubDate && <time class="text-stone-400">{pubDate}</time>}
+				<h1 class="text-2xl md:text-4xl text-stone-100 font-bold mb-0 md:mb-1">{title}</h1>
+				{pubDate && <time class=" text-stone-700">{pubDate}</time>}
 				{updatedDate && <div class="text-stone-500">Last updated on <time>{updatedDate}</time></div>}
-				<hr/>
+				<div class="-mb-4  -mt-2">
+					{tag.map((tag) => (
+						<p class=" inline-block text-sm md:text-base text-stone-300 bg-stone-800 rounded-md py-1 px-3 mr-2 last-of-type:mr-0">{tag}</p>
+					))}
+				</div>
+				<hr class="prose-sm"/>
 				<slot />
 			</article>
 		</main>

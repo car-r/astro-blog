@@ -4,6 +4,7 @@ title: "About Me"
 description: "Lorem ipsum dolor sit amet"
 updatedDate: "August 08 2022"
 heroImage: "/about.png"
+tag: ["markdown"]
 ---
 
 Hi, I'm Carson. I'm a self-taught software developer from Arizona. I've been learning to code in my free time for the last few years and it's finally starting to click! I've stopped and started, switched programming languages, and thought about quitting multiple times.
