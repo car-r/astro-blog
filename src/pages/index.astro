@@ -6,13 +6,19 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 import Container from '../layouts/Container.astro';
 import Hero from '../components/Hero.astro';
 import RecentPosts from '../components/RecentPosts.astro';
+import FeaturedPosts from '../components/FeaturedPosts.astro';
 
 
 const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
 );
 
+
 const recentPosts = posts.slice(0,3)
+
+
+const featuredPosts = posts.filter(post => post.frontmatter.featured === true)
+console.log(featuredPosts)
 ---
 
 <!DOCTYPE html>
@@ -24,6 +30,7 @@ const recentPosts = posts.slice(0,3)
 		<Header title={SITE_TITLE} />
 		<main class="text-stone-400">
 			<Hero />
+			<FeaturedPosts featuredPosts={featuredPosts}/>
 			<RecentPosts recentPosts={recentPosts}/>
 			<!-- <div class="py-20 px-4 max-w-7xl mx-auto">
 				<h3 class="text-2xl font-bold text-center text-stone-100 pb-6">Recent Posts</h3>
@@ -33,31 +40,6 @@ const recentPosts = posts.slice(0,3)
 					))}
 				</div>
 			</div> -->
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/pages/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
 		</main>
 		<Footer />
 	</div>

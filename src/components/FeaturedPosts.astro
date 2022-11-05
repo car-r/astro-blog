@@ -1,0 +1,15 @@
+---
+import FeaturedPostCard from "./FeaturedPostCard.astro";
+
+const {featuredPosts} = Astro.props
+console.log(featuredPosts)
+---
+
+<div class="py-32 px-4 max-w-7xl mx-auto">
+    <h3 class="text-2xl font-bold text-center text-stone-100 pb-10">Featured Posts</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {featuredPosts.map((post) => (
+            <FeaturedPostCard featuredPost={post}/>
+        ))}
+    </div>
+</div>
